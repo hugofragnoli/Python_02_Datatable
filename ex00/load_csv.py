@@ -3,11 +3,11 @@ import pandas as pd
 
 # panda : Biblio standard pour importer les csv
 
-def load(path: str) -> Dataset: # (you have to
-# adapt the type of return according to your library)
+def load(path: str) -> any:  # (you have to
+    # adapt the type of return according to your library)
     """
     Docstring pour load
-    
+
     :param path: Description
     :type path: str
     :return: Description
@@ -16,7 +16,7 @@ def load(path: str) -> Dataset: # (you have to
     try:
         # ici read_csv cree un "Dataframe" (un tab de données)
         # Il faut lassigner a une variable pour taffer avec
-        
+
         if not path.endswith(".csv"):
             raise AssertionError("Wrong Extension Format")
         tab_data = pd.read_csv(path)
@@ -25,7 +25,6 @@ def load(path: str) -> Dataset: # (you have to
         print(f"Dimensions du tableau : {tab_data.shape}")
 
         return tab_data
-
 
     except FileNotFoundError:
         print("Error: The file was not found.")
