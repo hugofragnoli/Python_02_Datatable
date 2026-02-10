@@ -3,7 +3,7 @@ import pandas as pd
 
 # panda : Biblio standard pour importer les csv
 
-def load(path: str) -> any:  # (you have to
+def load(path: str) -> pd.DataFrame | None:  # (you have to
     # adapt the type of return according to your library)
     """
     Docstring pour load
@@ -22,7 +22,7 @@ def load(path: str) -> any:  # (you have to
         tab_data = pd.read_csv(path)
         # pour les dimensions on utilise shape comme module precedent
         # (comme un attribut)
-        print(f"Dimensions du tableau : {tab_data.shape}")
+        print(f"Loadding dataset of dimensions {tab_data.shape}")
 
         return tab_data
 
