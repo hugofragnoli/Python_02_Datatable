@@ -1,0 +1,1 @@
+# proto : def load(path: str) -> Dataset: (you have to adapt the type of return according to your library)
