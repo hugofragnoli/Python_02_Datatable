@@ -21,7 +21,9 @@ def load(path: str) -> Dataset: # (you have to
         # (comme un attribut)
         print(f"Dimensions du tableau : {tab_data.shape}")
 
+        return tab_data
 
 
     except:
 
+        return None
