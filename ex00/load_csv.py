@@ -16,6 +16,8 @@ def load(path: str) -> Dataset: # (you have to
     try:
         # ici read_csv cree un "Dataframe" (un tab de données)
         # Il faut lassigner a une variable pour taffer avec
+        if not path.endswith(".csv"):
+            raise AssertionError("Wrong Extension Format")
         tab_data = pd.read_csv(path)
         # pour les dimensions on utilise shape comme module precedent
         # (comme un attribut)
