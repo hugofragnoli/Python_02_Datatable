@@ -23,7 +23,13 @@ def main():
     # .T = transpose = ajoute auto une legende pour pays
     # en passant en int, laxe X devient une ligne numerique
     comparaison.index = comparaison.index.astype(int)
-    comparaison.values = parse_population(comparaison.values)
+    # on ne peut pas faire lattribution ci dessous
+    # une string vs un tab numpy
+    # comparaison.values = parse_population(comparaison.values)
+    # donc on doit utiliser .map() qui va passer chaque valeur
+    comparaison = comparaison.map(parse_population)
+    # pour sarreter a 2050
+    comparaison = comparaison.loc[1800:2050]
     #on prend ces donnees la.
     comparaison.plot()
 
@@ -34,7 +40,7 @@ def main():
 
     plt.xlabel("Années")
     # ordonnees.
-    plt.ylabel("Nombre d'habitants")
+    plt.ylabel("Nombre d'habitants en dizaine de millions")
     # On récupère l'objet "axe" du graphique actuel
     ax = plt.gca()
 
