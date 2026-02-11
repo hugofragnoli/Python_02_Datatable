@@ -4,25 +4,27 @@ import pandas as pd
 from matplotlib.ticker import MultipleLocator
 
 def main():
-    data_frame = load("life_expectancy_years.csv")
+    data_frame = load("population_total.csv")
     # on place lindex sur les pays
     data_frame.set_index("country", inplace=True)
     #on cible la france, la belgique et l allemagne mtn
     pays_vises = ["France", "Belgium", "Germany"]
     # on recup un tableau avec les pays vises
-    comparaison = data_frame.loc[pays_vises]
+    comparaison = data_frame.loc[pays_vises].T
+    # .T = transpose = ajoute auto une legende pour pays
     # en passant en int, laxe X devient une ligne numerique
     comparaison.index = comparaison.index.astype(int)
     #on prend ces donnees la.
-    plt.plot(comparaison.index, comparaison.values)
+    comparaison.plot()
 
     # on cree un titre
-    plt.title("Évolution de l'espérance de vie en France")
+    plt.legend(title="Pays")
+    plt.title("Évolution de la population : France, Belgique, Allemagne")
     # On donne le label de laxe abscisse
 
     plt.xlabel("Années")
     # ordonnees.
-    plt.ylabel("Âge")
+    plt.ylabel("Nombre d'habitants")
     # On récupère l'objet "axe" du graphique actuel
     ax = plt.gca()
 
