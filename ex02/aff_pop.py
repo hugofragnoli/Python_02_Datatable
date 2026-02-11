@@ -3,6 +3,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.ticker import MultipleLocator
 
+def parse_population(value):
+    if isinstance(value, str):
+        if value.endswith('M'):
+            return float(value[:-1]) * 1_000_000
+        elif value.endswith('k'):
+            return float(value[:-1]) * 1_000
+        return float(value)
+    return value
+
 def main():
     data_frame = load("population_total.csv")
     # on place lindex sur les pays
