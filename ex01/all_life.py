@@ -1,17 +1,17 @@
 from load_csv import load
 import matplotlib.pyplot as plt
-import pandas as pd
 from matplotlib.ticker import MultipleLocator
+
 
 def main():
     data_frame = load("life_expectancy_years.csv")
     # on place lindex sur les pays
     data_frame.set_index("country", inplace=True)
-    #on cible la france.
+    # on cible la france.
     france = data_frame.loc["France"]
     # en passant en int, laxe X devient une ligne numerique
     france.index = france.index.astype(int)
-    #on prend ces donnees la.
+    # on prend ces donnees la.
     plt.plot(france.index, france.values)
 
     # on cree un titre
@@ -35,4 +35,4 @@ def main():
 
 
 if __name__ == "__main__":
-  main()
+    main()

@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-# panda : Biblio standard pour importer les csv 
+# panda : Biblio standard pour importer les csv
 
 def load(path: str) -> pd.DataFrame | None:  # (you have to
     # adapt the type of return according to your library)

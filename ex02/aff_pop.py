@@ -1,7 +1,7 @@
 from load_csv import load
 import matplotlib.pyplot as plt
-import pandas as pd
 from matplotlib.ticker import MultipleLocator
+
 
 def parse_population(value):
     if isinstance(value, str):
@@ -12,11 +12,12 @@ def parse_population(value):
         return float(value)
     return value
 
+
 def main():
     data_frame = load("population_total.csv")
     # on place lindex sur les pays
     data_frame.set_index("country", inplace=True)
-    #on cible la france, la belgique et l allemagne mtn
+    # on cible la france, la belgique et l allemagne mtn
     pays_vises = ["France", "Belgium", "Germany"]
     # on recup un tableau avec les pays vises
     comparaison = data_frame.loc[pays_vises].T
@@ -30,7 +31,7 @@ def main():
     comparaison = comparaison.map(parse_population)
     # pour sarreter a 2050
     comparaison = comparaison.loc[1800:2050]
-    #on prend ces donnees la.
+    # on prend ces donnees la.
     (comparaison / 1_000_000).plot()
 
     # on cree un titre
@@ -55,4 +56,4 @@ def main():
 
 
 if __name__ == "__main__":
-  main()
+    main()
