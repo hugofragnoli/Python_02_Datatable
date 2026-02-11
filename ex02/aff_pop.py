@@ -31,7 +31,7 @@ def main():
     # pour sarreter a 2050
     comparaison = comparaison.loc[1800:2050]
     #on prend ces donnees la.
-    comparaison.plot()
+    (comparaison / 1_000_000).plot()
 
     # on cree un titre
     plt.legend(title="Pays")
@@ -40,7 +40,7 @@ def main():
 
     plt.xlabel("Années")
     # ordonnees.
-    plt.ylabel("Nombre d'habitants en dizaine de millions")
+    plt.ylabel("Nombre d'habitants en millions")
     # On récupère l'objet "axe" du graphique actuel
     ax = plt.gca()
 
