@@ -23,6 +23,7 @@ def main():
     # .T = transpose = ajoute auto une legende pour pays
     # en passant en int, laxe X devient une ligne numerique
     comparaison.index = comparaison.index.astype(int)
+    comparaison.values = parse_population(comparaison.values)
     #on prend ces donnees la.
     comparaison.plot()
 
