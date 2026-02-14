@@ -4,6 +4,20 @@ import pandas as pd
 
 
 def merge_func(df_life: pd.DataFrame, df_income: pd.DataFrame) -> pd.DataFrame:
+    """
+    Fusionne les données d'espérance de vie et de revenus pour l'année 1900.
+
+    Cette fonction extrait les colonnes nécessaires et effectue une jointure
+    interne (inner join) basée sur le nom du pays.
+
+    Args:
+        df_life(pd.DataFrame): DataFrame contient l'espérance de vie par pays
+        df_income(pd.DataFrame): DataFrame contient le revenu par pers par pays
+
+    Returns:
+        pd.DataFrame: Un DataFrame fusionné contenant 'country', '1900_life'
+                      et '1900_income'.
+    """
     # On extrait uniquement la colonne country et l'année 1900
     # On utilise .copy() pour éviter les warnings de Pandas
     life_1900 = df_life[["country", "1900"]].copy()
@@ -16,6 +30,12 @@ def merge_func(df_life: pd.DataFrame, df_income: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
+    """
+    Charge les datasets, fusionne les data de 1900 et génère un nuage de points
+
+    Le graphique utilise une échelle logarithmique sur l'axe des abscisses(PIB)
+    pour mieux visualiser la répartition des pays et des labels personnalisés.
+    """
     data_life_exp = load("life_expectancy_years.csv")
     data_income_per_pp = load("income_per_person_gdppercapita_"
                               "ppp_inflation_adjusted.csv")

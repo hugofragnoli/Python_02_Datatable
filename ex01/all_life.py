@@ -4,6 +4,16 @@ from matplotlib.ticker import MultipleLocator
 
 
 def main():
+    """
+    Charge les données d'espérance de vie et affiche l'évolution pour la France
+
+    Le script effectue les étapes suivantes :
+    1. Chargement du dataset 'life_expectancy_years.csv'.
+    2. Définition de la colonne 'country' comme index.
+    3. Extraction des données spécifiques à la France.
+    4. Conversion de l'index des années en entiers pour un tracé linéaire.
+    5. Configuration graphique (titres, labels, et graduations des axes).
+    """
     data_frame = load("life_expectancy_years.csv")
     # on place lindex sur les pays
     data_frame.set_index("country", inplace=True)

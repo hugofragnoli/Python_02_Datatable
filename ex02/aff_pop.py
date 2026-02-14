@@ -4,6 +4,17 @@ from matplotlib.ticker import MultipleLocator
 
 
 def parse_population(value):
+    """
+    Convertit les valeurs de population textuelles en nombres réels (float).
+
+    Gère les suffixes 'M' pour millions et 'k' pour milliers.
+
+    Args:
+        value (str | int | float): La valeur à convertir.
+
+    Returns:
+        float: La valeur numérique convertie.
+    """
     if isinstance(value, str):
         if value.endswith('M'):
             return float(value[:-1]) * 1_000_000
@@ -14,6 +25,13 @@ def parse_population(value):
 
 
 def main():
+    """
+    Charge les données de population les traite et cree un graphique comparatif
+
+    Le script compare la France, la Belgique et l'Allemagne de 1800 à 2050.
+    Il utilise une transposition de données (T) pour faciliter le traçage
+    et personnalise les axes avec des locators majeurs et mineurs.
+    """
     data_frame = load("population_total.csv")
     # on place lindex sur les pays
     data_frame.set_index("country", inplace=True)
